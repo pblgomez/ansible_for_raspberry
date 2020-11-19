@@ -1,0 +1,16 @@
+# {{ ansible_managed }}
+---
+all:
+  vars:
+    ansible_python_interpreter: '/usr/bin/env python3'
+
+RaspberryPiOS:
+  hosts:
+  {% for item in RaspberryPiOS %}
+  {{ item.name }}:
+  {% for item_var in item.vars %}
+    ansible_host: {{ item_var['host'] }}
+      ansible_port: {{ item_var['port'] }}
+      ansible_user: {{ item_var['user'] }}
+  {% endfor %}
+{% endfor %}

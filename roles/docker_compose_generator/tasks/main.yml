@@ -1,0 +1,38 @@
+---
+- name: Install deps 1/2
+  become: yes
+  apt: name=python3-pip state=present
+- name: Install deps 2/2
+  pip:
+    name:
+      - docker
+      - docker-compose
+    state: present
+  changed_when: False
+
+- name: ensure destination for compose file exists
+  file:
+    path: "{{ docker_compose_generator_output_path }}"
+    state: directory
+  tags: docker_compose
+
+- name: write docker-compose file
+  template:
+    src: ../templates/docker-compose.yml.j2
+    dest: "{{ docker_compose_generator_output_path }}/docker-compose.yml"
+    owner: "{{ docker_compose_generator_uid }}"
+    group: "{{ docker_compose_generator_gid }}"
+  tags: docker_compose
+
+- name: Create and start services
+  community.general.docker_compose:
+    project_src: '~'
+    build: no
+  register: output
+
+- name: Prune everything
+  community.general.docker_prune:
+    images: yes
+    images_filters:
+      # only consider containers created more than 24 hours ago
+      until: 8m
