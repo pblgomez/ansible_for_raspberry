@@ -231,7 +231,7 @@ containers:
       - nextcloud_db
       - caddy
     healthcheck:
-      test_port: "9999"
+      test_port: "80"
       interval: 30s
       timeout: 10s
       retries: 5
