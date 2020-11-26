@@ -4,15 +4,15 @@
     - name: Create inventory.yml
       include_role:
         name: inventory_generator
-      tags: test
+      tags: always
     - meta: refresh_inventory
+      tags: always
 
 
 
-- hosts: RaspberryPiOS
+- hosts: all
   become: yes
   tasks:
-
     - name: Ensure ansible user accepts the SSH key 
       authorized_key: 
         user: "{{ ansible_user }}"
@@ -60,3 +60,20 @@
       include_role:
         name: docker_compose_generator
       tags: docker_compose
+
+- hosts: caleserver
+  tasks:
+    - name: Create docker-compose
+      include_role:
+        name: docker_compose_generator
+      tags: docker_compose
+
+
+- hosts: localhost
+  connection: local 
+  tasks:
+    - name: Remove inventory.yml
+      file:
+        path: inventory.yml
+        state: absent
+      tags: always

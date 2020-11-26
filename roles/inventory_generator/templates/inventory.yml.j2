@@ -14,3 +14,14 @@ RaspberryPiOS:
       ansible_user: {{ item_var['user'] }}
   {% endfor %}
 {% endfor %}
+
+Raspbuntu:
+  hosts:
+  {% for item in Raspbuntu %}
+  {{ item.name }}:
+  {% for item_var in item.vars %}
+    ansible_host: {{ item_var['host'] }}
+      ansible_port: {{ item_var['port'] }}
+      ansible_user: {{ item_var['user'] }}
+  {% endfor %}
+{% endfor %}

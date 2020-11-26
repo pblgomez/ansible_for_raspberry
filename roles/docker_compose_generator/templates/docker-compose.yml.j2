@@ -46,6 +46,17 @@ services:
       - {{ port }}
 {% endfor %}
 {% endif %}
+{% if container.networks is defined %}
+    networks:
+  {% for network_name in container.networks %}
+    {{ network_name }}:
+  {% for network_address, test in container.networks.items() %}
+  {% for key,value2 in test.items() %}
+    {{ key }}: {{ value2 }}
+{% endfor %}
+{% endfor %}
+{% endfor %}
+{% endif %}
 {% if container.volumes is defined %}
     volumes:
 {% for volume in container.volumes %}
@@ -80,7 +91,7 @@ services:
 {% if container.healthcheck is defined %}
     healthcheck:
 {% if container.healthcheck.test_port is defined %}
-      test: ["CMD", "curl", "-f", "http://127.0.0.1:{{ container.healthcheck.test_port }}"]
+      test: "curl --fail --silent http://localhost:{{ container.healthcheck.test_port }} || exit 1"
 {% endif %}
 {% if container.healthcheck.interval is defined %}
       interval: {{ container.healthcheck.interval }}
@@ -121,9 +132,25 @@ services:
 
 {% if volumes is defined %}
 volumes:
-{% endif %}
 {% for volume in volumes %}
 {% if volume.active %}
   {{ volume.volume_name }}:
 {% endif %}
 {% endfor %}
+{% endif %}
+
+{% if networks is defined %}
+networks:
+{% for network in networks %}
+{% if network.active %}
+  {{ network.network_name }}:
+    driver: {{ network.driver }}
+    {% if network.ipam %}ipam:
+  {% for ipam, test in network.ipam.items() %}
+    {{ ipam }}:
+        - subnet: {{ test[0].subnet }}
+  {% endfor %}
+    {% endif %}
+{% endif %}
+{% endfor %}
+{% endif %}

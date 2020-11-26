@@ -3,6 +3,4 @@
   template:
     src: ../templates/inventory.yml.j2
     dest: "{{ playbook_dir }}/inventory.yml"
-    #owner: "{{ docker_compose_generator_uid }}"
-    #group: "{{ docker_compose_generator_gid }}"
-  tags: test
+  tags: always

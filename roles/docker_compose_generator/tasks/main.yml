@@ -28,11 +28,10 @@
   community.general.docker_compose:
     project_src: '~'
     build: no
-  register: output
 
 - name: Prune everything
   community.general.docker_prune:
     images: yes
     images_filters:
       # only consider containers created more than 24 hours ago
-      until: 8m
+      until: 60m
