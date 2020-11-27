@@ -8,5 +8,6 @@ Ansible that:
   - Cleans old docker images
 
 TODO:
-  - More docker images
   - Security
+
+Funny, all my git commits are automatically taken from http://whatthecommit.com/index.txt
