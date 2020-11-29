@@ -28,6 +28,7 @@
   community.general.docker_compose:
     project_src: '~'
     build: no
+  tags: docker_compose
 
 - name: Prune everything
   community.general.docker_prune:
