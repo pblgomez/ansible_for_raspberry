@@ -89,7 +89,7 @@ containers:
   - service_name: duckdns
     active: true
     include_global_env_vars: true
-    image: ghcr.io/linuxserver/duckdns:version-d878afd7
+    image: ghcr.io/linuxserver/duckdns:67a3afee-ls60
     environment:
       - "SUBDOMAINS={{ DUCKDNS_SUBDOMAINS }}"
       - "TOKEN={{ DUCKDNS_TOKEN }}"
@@ -207,7 +207,7 @@ containers:
     active: true
     include_global_env_vars: true
     container_name: jackett
-    image: linuxserver/jackett:v0.16.2256-ls7
+    image: linuxserver/jackett:v0.16.2269-ls7
     ports:
       - 9117:9117
     volumes:
@@ -307,8 +307,8 @@ containers:
     user: "{{ docker_compose_generator_uid }}:{{ docker_compose_generator_gid }}"
     volumes:
       - "{{ appdata_path_cached }}/openwrt_metrics/db_data:/var/lib/influxdb"
-      - "{{ appdata_path_cached }}/openwrt_metrics/influxdb.conf:/etc/influxdb/influxdb.conf:ro"
-      - "{{ appdata_path_cached }}/openwrt_metrics/types.db:/usr/share/collectd/types.db:ro"
+      - "{{ appdata_path }}/openwrt_metrics/influxdb.conf:/etc/influxdb/influxdb.conf:ro"
+      - "{{ appdata_path }}/openwrt_metrics/types.db:/usr/share/collectd/types.db:ro"
     ports:
       - 8083:8083
       - 8086:8086
@@ -333,7 +333,7 @@ containers:
   - service_name: radarr
     active: true
     include_global_env_vars: true
-    image: linuxserver/radarr:v0.2.0.1504-ls84
+    image: linuxserver/radarr:3.0.0.4204-ls85
     ports:
       - 7878:7878
     volumes:
