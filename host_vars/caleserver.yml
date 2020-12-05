@@ -98,7 +98,8 @@ containers:
   - service_name: emby
     active: true
     include_global_env_vars: true
-    image: linuxserver/emby:arm64v8-4.5.2.0-ls60
+    #image: linuxserver/emby:arm64v8-4.5.2.0-ls60
+    image: linuxserver/emby:arm64v8-4.5.3.0-ls64
     devices:
       - /dev/vchiq:/dev/vchiq
       - /dev/video10:/dev/video10
@@ -207,7 +208,7 @@ containers:
     active: true
     include_global_env_vars: true
     container_name: jackett
-    image: linuxserver/jackett:v0.16.2291-ls7
+    image: linuxserver/jackett:v0.16.2299-ls7
     ports:
       - 9117:9117
     volumes:
