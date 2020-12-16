@@ -89,7 +89,7 @@ containers:
   - service_name: duckdns
     active: true
     include_global_env_vars: true
-    image: ghcr.io/linuxserver/duckdns:67a3afee-ls60
+    image: ghcr.io/linuxserver/duckdns:521bc4a6-ls61
     environment:
       - "SUBDOMAINS={{ DUCKDNS_SUBDOMAINS }}"
       - "TOKEN={{ DUCKDNS_TOKEN }}"
@@ -98,7 +98,6 @@ containers:
   - service_name: emby
     active: true
     include_global_env_vars: true
-    #image: linuxserver/emby:arm64v8-4.5.2.0-ls60
     image: linuxserver/emby:arm64v8-4.5.3.0-ls64
     devices:
       - /dev/vchiq:/dev/vchiq

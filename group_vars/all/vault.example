@@ -1,0 +1,38 @@
+---
+vault_TZ: "Europe/London"
+
+RaspberryPiOS:
+  - name: "parallx"
+    vars:
+      - {
+          host: "domain1.example.com",
+          port: 22,
+          user: "pi",
+          DUCKDNS_SUBDOMAINS: "domain1",
+          DUCKDNS_TOKEN: "8ae9be8cd9839-87f9ec938-c380abecdfe8",
+          HASSDB_ROOT_PASSWD: "hassdbpassword",
+          HASSDB_USER: "hassdbuser",
+          HASSDB_PASSWORD: "hassdbpassword",
+        }
+  - name: "kurikiki_hass"
+    vars:
+      - { host: "kurikiki.duckdns.org", port: 22, user: "pi" }
+  - name: "kurikiki_nextcloud"
+    vars:
+      - { host: "kurikiki.duckdns.org", port: 23, user: "pi" }
+
+Raspbuntu:
+  - name: "caleserver"
+    vars:
+      - {
+          host: "domain2.example.com",
+          port: 22, user: "ubuntu",
+          DUCKDNS_SUBDOMAINS: "domain2",
+          DUCKDNS_TOKEN: "8ae9be8cd9839-87f9ec938-c380abecdfe8",
+          HASSDB_ROOT_PASSWD: "hassdbpassword",
+          HASSDB_USER: "hassdbuser",
+          HASSDB_PASSWORD: "hassdbpassword",
+          NEXTC_DB_ROOT_PASSWORD: nextclouddbrootpassword,
+          NEXTC_DB_USER: nextclouddbuser,
+          NEXTC_DB_PASSWORD: nextclouddbpassword
+        }
