@@ -14,12 +14,9 @@ RaspberryPiOS:
           HASSDB_USER: "hassdbuser",
           HASSDB_PASSWORD: "hassdbpassword",
         }
-  - name: "kurikiki_hass"
+  - name: "domain3"
     vars:
-      - { host: "kurikiki.duckdns.org", port: 22, user: "pi" }
-  - name: "kurikiki_nextcloud"
-    vars:
-      - { host: "kurikiki.duckdns.org", port: 23, user: "pi" }
+      - { host: "domain3.example.com", port: 22, user: "pi" }
 
 Raspbuntu:
   - name: "caleserver"
