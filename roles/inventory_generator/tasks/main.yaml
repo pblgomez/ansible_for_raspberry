@@ -1,6 +1,6 @@
 ---
 - name: write inventory.yml
-  template:
-    src: ../templates/inventory.yml.j2
+  ansible.builtin.template:
+    src: inventory.yml.j2
     dest: "{{ playbook_dir }}/inventory.yml"
   tags: always

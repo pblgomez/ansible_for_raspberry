@@ -1,5 +1,5 @@
 - hosts: localhost
-  connection: local 
+  connection: local
   tasks:
     - name: Create inventory.yml
       include_role:
@@ -13,16 +13,16 @@
 - hosts: all
   become: yes
   tasks:
-    - name: Ensure ansible user accepts the SSH key 
-      authorized_key: 
+    - name: Ensure ansible user accepts the SSH key
+      authorized_key:
         user: "{{ ansible_user }}"
         key: "{{ lookup('file', '~/.ssh/id_ed25519.pub') }}"
-        state: present 
+        state: present
 
     - name: Update and upgrade apt packages
       apt:
         update_cache: yes
-        cache_valid_time: 86400 # 86400 = One day  
+        cache_valid_time: 86400 # 86400 = One day
         upgrade: dist
         autoremove: yes
         purge: yes
@@ -70,7 +70,7 @@
 
 
 - hosts: localhost
-  connection: local 
+  connection: local
   tasks:
     - name: Remove inventory.yml
       file:
