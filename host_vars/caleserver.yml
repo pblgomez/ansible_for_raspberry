@@ -31,7 +31,7 @@ containers:
     active: true
     include_global_env_vars: true
     container_name: bazarr
-    image: linuxserver/bazarr:v0.9.0.7-ls101
+    image: linuxserver/bazarr:v0.9.0.8-ls102
     ports:
       - 6767:6767
     volumes:
@@ -150,7 +150,7 @@ containers:
     active: true
     include_global_env_vars: true
     container_name: homeassistant
-    image: homeassistant/raspberrypi4-homeassistant:2021.1.0
+    image: homeassistant/raspberrypi4-homeassistant:2021.1.4
     network_mode: host
     volumes:
       - "{{ appdata_path }}/homeassistant:/config"
@@ -207,7 +207,7 @@ containers:
     active: true
     include_global_env_vars: true
     container_name: jackett
-    image: linuxserver/jackett:v0.17.294-ls16
+    image: linuxserver/jackett:v0.17.343-ls17
     ports:
       - 9117:9117
     volumes:
@@ -286,7 +286,7 @@ containers:
   - service_name: ombi
     active: true
     include_global_env_vars: true
-    image: linuxserver/ombi:v3.0.5223-ls79
+    image: linuxserver/ombi:v3.0.5223-ls81
     ports:
       - 3579:3579
     volumes:
