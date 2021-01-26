@@ -350,7 +350,7 @@ containers:
   - service_name: sonarr
     active: true
     include_global_env_vars: true
-    image: linuxserver/sonarr:2.0.0.5344-ls91
+    image: linuxserver/sonarr:2.0.0.5344-ls92
     ports:
       - 8989:8989
     volumes:
