@@ -6,3 +6,5 @@ rules:
     max: 160
     allow-non-breakable-inline-mappings: true
     level: warning
+  document-start:
+    present: true
