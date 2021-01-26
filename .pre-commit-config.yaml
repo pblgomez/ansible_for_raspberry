@@ -13,3 +13,13 @@ repos:
     hooks:
       - id: yamllint
         args: [-c=.yamllint]
+
+  - repo: https://github.com/motet-a/jinjalint
+    rev: master
+    hooks:
+      - id: jinjalint
+
+  - repo: https://github.com/jumanjihouse/pre-commit-hooks
+    rev: master
+    hooks:
+      - id: markdownlint # Configure in .mdlrc
