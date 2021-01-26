@@ -2,5 +2,5 @@
 - name: write inventory.yml
   ansible.builtin.template:
     src: inventory.yml.j2
-    dest: "{{ playbook_dir }}/inventory.yml"
+    dest: '{{ playbook_dir }}/inventory.yml'
   tags: always

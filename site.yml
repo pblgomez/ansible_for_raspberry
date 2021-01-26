@@ -1,3 +1,4 @@
+---
 - hosts: localhost
   connection: local
   tasks:
@@ -9,52 +10,51 @@
       tags: always
 
 
-
 - hosts: all
-  become: yes
+  become: true
   tasks:
     - name: Ensure ansible user accepts the SSH key
       authorized_key:
-        user: "{{ ansible_user }}"
+        user: '{{ ansible_user }}'
         key: "{{ lookup('file', '~/.ssh/id_ed25519.pub') }}"
         state: present
 
     - name: Update and upgrade apt packages
       apt:
-        update_cache: yes
-        cache_valid_time: 86400 # 86400 = One day
+        update_cache: true
+        cache_valid_time: 86400     # 86400 = One day
         upgrade: dist
-        autoremove: yes
-        purge: yes
+        autoremove: true
+        purge: true
 
 
 - hosts: parallx
   vars:
     dirs_to_backup:
-      - "config/caddy"
-      - "config/homeassistant"
-      - "config/homeassistant_db"
-      - "config/mosquitto"
-      - "config/node-red"
-      - "wireguard"
+      - config/caddy
+      - config/homeassistant
+      - config/homeassistant_db
+      - config/mosquitto
+      - config/node-red
+      - wireguard
   tasks:
     - name: Backup of directories ( create local dirs )
       tags: backup
       file:
-        path: "/home/{{ lookup('env', 'USER') }}/Documents/HASS/{{ inventory_hostname }}/{{ item }}"
+        path: /home/{{ lookup('env', 'USER') }}/Documents/HASS/{{ inventory_hostname }}/{{ item }}
         state: directory
         mode: 0755
       delegate_to: localhost
-      with_items: "{{ dirs_to_backup }}"
+      with_items: '{{ dirs_to_backup }}'
 
     - name: Backup of directories
       tags: backup
       ansible.posix.synchronize:
         mode: pull
-        src: "{{ item }}"
-        dest: "/home/{{ lookup('env', 'USER') }}/Documents/HASS/{{ inventory_hostname }}/{{ item }}/../"
+        src: '{{ item }}'
+        dest: /home/{{ lookup('env', 'USER') }}/Documents/HASS/{{ inventory_hostname }}/{{ item }}/../
         delete: true
-      with_items: "{{ dirs_to_backup }}"
+      with_items: '{{ dirs_to_backup }}'
 
     - name: Create docker-compose
       include_role:
