@@ -1,8 +1,6 @@
 ---
-#-------------------------------------------------------------- docker-compose #
-
-the_host_name: "caleserver"
-the_group: '{{ Raspbuntu }}'
+the_host_name: caleserver
+the_group: "{{ Raspbuntu }}"
 
 DOMAIN: "{% for item in the_group %}{% if item.name == the_host_name %}{{ item.vars[0]['host'] }}{% endif %}{% endfor %}"
 DUCKDNS_SUBDOMAINS: "{% for item in the_group %}{% if item.name == the_host_name %}{{ item.vars[0]['DUCKDNS_SUBDOMAINS'] }}{% endif %}{% endfor %}"
@@ -11,19 +9,18 @@ HASSDB_ROOT_PASSWD: "{% for item in the_group %}{% if item.name == the_host_name
 HASSDB_USER: "{% for item in the_group %}{% if item.name == the_host_name %}{{ item.vars[0]['HASSDB_USER'] }}{% endif %}{% endfor %}"
 HASSDB_PASSWORD: "{% for item in the_group %}{% if item.name == the_host_name %}{{ item.vars[0]['HASSDB_PASSWORD'] }}{% endif %}{% endfor %}"
 
-
 NEXTC_DB_ROOT_PASSWORD: "{% for item in the_group %}{% if item.name == the_host_name %}{{ item.vars[0]['NEXTC_DB_ROOT_PASSWORD'] }}{% endif %}{% endfor %}"
 NEXTC_DB_USER: "{% for item in the_group %}{% if item.name == the_host_name %}{{ item.vars[0]['NEXTC_DB_USER'] }}{% endif %}{% endfor %}"
 NEXTC_DB_PASSWORD: "{% for item in the_group %}{% if item.name == the_host_name %}{{ item.vars[0]['NEXTC_DB_PASSWORD'] }}{% endif %}{% endfor %}"
 
 global_env_vars:
-  - "PUID=1000"
-  - "PGID=1000"
-  - "TZ={{ vault_TZ }}"
-appdata_path: "/media/storage/config"
-appdata_path_cached: "/media/cached_storage/config"        # Because of mergerfs
-video_path: "/media/storage/Videos"
-downloads_path: "/media/storage/Downloads"
+  - PUID=1000
+  - PGID=1000
+  - TZ={{ vault_TZ }}
+appdata_path: /media/storage/config
+appdata_path_cached: /media/cached_storage/config   # Because of mergerfs
+video_path: /media/storage/Videos
+downloads_path: /media/storage/Downloads
 container_config_path: /config
 
 containers:
@@ -76,12 +73,12 @@ containers:
       - 80:80
       - 443:443
     volumes:
-      - /var/run/docker.sock:/tmp/docker.sock:ro                          # For docker
-      - "{{ appdata_path }}/caddy/Caddyfile:/etc/caddy/Caddyfile"         # Caddyfile
-      - "{{ appdata_path }}/caddy/data:{{ container_config_path }}/caddy" # certificates
-      - "{{ appdata_path }}/caddy/config:{{ container_config_path }}"     # json
+      - /var/run/docker.sock:/tmp/docker.sock:ro                            # For docker
+      - "{{ appdata_path }}/caddy/Caddyfile:/etc/caddy/Caddyfile"           # Caddyfile
+      - "{{ appdata_path }}/caddy/data:{{ container_config_path }}/caddy"   # certificates
+      - "{{ appdata_path }}/caddy/config:{{ container_config_path }}"       # json
     environment:
-      - "DOMAIN={{ DOMAIN }}"
+      - DOMAIN={{ DOMAIN }}
     depends_on:
       - duckdns
     restart: unless-stopped
@@ -91,8 +88,8 @@ containers:
     include_global_env_vars: true
     image: ghcr.io/linuxserver/duckdns:e60b35ff-ls64
     environment:
-      - "SUBDOMAINS={{ DUCKDNS_SUBDOMAINS }}"
-      - "TOKEN={{ DUCKDNS_TOKEN }}"
+      - SUBDOMAINS={{ DUCKDNS_SUBDOMAINS }}
+      - TOKEN={{ DUCKDNS_TOKEN }}
     restart: unless-stopped
 
   - service_name: emby
@@ -157,8 +154,8 @@ containers:
       - /etc/localtime:/etc/localtime:ro
       - "{{ appdata_path }}/homeassistant/docker/run:/etc/services.d/home-assistant/run"
     extra_hosts:
-      - "hass-db:172.92.92.92"
-      - "homeassistant_metrics:172.92.92.94"
+      - hass-db:172.92.92.92
+      - homeassistant_metrics:172.92.92.94
     environment:
       - PACKAGES=iputils
     depends_on:
@@ -179,10 +176,10 @@ containers:
     include_global_env_vars: true
     image: ghcr.io/linuxserver/mariadb:110.4.17mariabionic-ls7
     environment:
-      - "MYSQL_ROOT_PASSWORD={{ HASSDB_ROOT_PASSWD }}"
-      - "MYSQL_DATABASE=homeassistant"
-      - "MYSQL_USER={{ HASSDB_USER }}"
-      - "MYSQL_PASSWORD={{ HASSDB_PASSWORD }}"
+      - MYSQL_ROOT_PASSWORD={{ HASSDB_ROOT_PASSWD }}
+      - MYSQL_DATABASE=homeassistant
+      - MYSQL_USER={{ HASSDB_USER }}
+      - MYSQL_PASSWORD={{ HASSDB_PASSWORD }}
     volumes:
       - "{{ appdata_path_cached }}/homeassistant_db:/config"
     ports:
@@ -207,7 +204,7 @@ containers:
     active: true
     include_global_env_vars: true
     container_name: jackett
-    image: linuxserver/jackett:v0.17.343-ls17
+    image: linuxserver/jackett:v0.17.370-ls17
     ports:
       - 9117:9117
     volumes:
@@ -242,10 +239,10 @@ containers:
     include_global_env_vars: true
     image: ghcr.io/linuxserver/mariadb:110.4.17mariabionic-ls1
     environment:
-      - "MYSQL_ROOT_PASSWORD={{ NEXTC_DB_ROOT_PASSWORD }}"
-      - "MYSQL_DATABASE=nextcloud"
-      - "MYSQL_USER={{ NEXTC_DB_USER }}"
-      - "MYSQL_PASSWORD={{ NEXTC_DB_PASSWORD }}"
+      - MYSQL_ROOT_PASSWORD={{ NEXTC_DB_ROOT_PASSWORD }}
+      - MYSQL_DATABASE=nextcloud
+      - MYSQL_USER={{ NEXTC_DB_USER }}
+      - MYSQL_PASSWORD={{ NEXTC_DB_PASSWORD }}
     ports:
       - 3307:3306
     volumes:
@@ -261,7 +258,7 @@ containers:
       - /etc/localtime:/etc/localtime:ro
       - "{{ appdata_path }}/node-red:/data"
       - "{{ volume_node_red_modules }}:/usr/src/node-red/node_modules"
-      - /etc/timezone:/etc/timezone:ro 
+      - /etc/timezone:/etc/timezone:ro
     depends_on:
       - mosquitto
     healthcheck:
@@ -286,7 +283,7 @@ containers:
   - service_name: ombi
     active: true
     include_global_env_vars: true
-    image: linuxserver/ombi:v3.0.5223-ls81
+    image: linuxserver/ombi:v3.0.5223-ls82
     ports:
       - 3579:3579
     volumes:
@@ -333,7 +330,7 @@ containers:
   - service_name: radarr
     active: true
     include_global_env_vars: true
-    image: linuxserver/radarr:3.0.1.4259-ls90
+    image: linuxserver/radarr:3.0.1.4259-ls91
     ports:
       - 7878:7878
     volumes:
@@ -373,7 +370,7 @@ containers:
   - service_name: transmission
     active: true
     include_global_env_vars: true
-    image: linuxserver/transmission:3.00-r0-ls73
+    image: linuxserver/transmission:3.00-r0-ls75
     ports:
       - 9091:9091
       - 51413:51413
@@ -390,7 +387,7 @@ containers:
     restart: unless-stopped
 
 # volumes
-volume_node_red_modules: "node-red-modules"
+volume_node_red_modules: node-red-modules
 
 volumes:
   - volume_name: "{{ volume_node_red_modules }}"

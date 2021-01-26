@@ -1,13 +1,12 @@
 ---
-#-------------------------------------------------------------- docker-compose #
-the_host_name: "parallx"
-the_group: '{{ RaspberryPiOS }}'
+the_host_name: parallx
+the_group: "{{ RaspberryPiOS }}"
 
 global_env_vars:
-  - "PUID=1000"
-  - "PGID=1000"
-  - "TZ={{ vault_TZ }}"
-appdata_path: "/home/{{ ansible_user }}/config"
+  - PUID=1000
+  - PGID=1000
+  - TZ={{ vault_TZ }}
+appdata_path: /home/{{ ansible_user }}/config
 container_config_path: /config
 
 DOMAIN: "{% for item in the_group %}{% if item.name == the_host_name %}{{ item.vars[0]['host'] }}{% endif %}{% endfor %}"
@@ -27,12 +26,12 @@ containers:
       - 80:80
       - 443:443
     volumes:
-      - /var/run/docker.sock:/tmp/docker.sock:ro                          # For docker
-      - "{{ appdata_path }}/caddy/Caddyfile:/etc/caddy/Caddyfile"         # Caddyfile
-      - "{{ appdata_path }}/caddy/data:{{ container_config_path }}/caddy" # certificates
-      - "{{ appdata_path }}/caddy/config:{{ container_config_path }}"     # json
+      - /var/run/docker.sock:/tmp/docker.sock:ro                            # For docker
+      - "{{ appdata_path }}/caddy/Caddyfile:/etc/caddy/Caddyfile"           # Caddyfile
+      - "{{ appdata_path }}/caddy/data:{{ container_config_path }}/caddy"   # certificates
+      - "{{ appdata_path }}/caddy/config:{{ container_config_path }}"       # json
     environment:
-      - "DOMAIN={{ DOMAIN }}"
+      - DOMAIN={{ DOMAIN }}
     depends_on:
       - duckdns
     restart: unless-stopped
@@ -43,8 +42,8 @@ containers:
     container_name: duckdns
     image: ghcr.io/linuxserver/duckdns:version-d878afd7
     environment:
-      - "SUBDOMAINS={{ DUCKDNS_SUBDOMAINS }}"
-      - "TOKEN={{ DUCKDNS_TOKEN }}"
+      - SUBDOMAINS={{ DUCKDNS_SUBDOMAINS }}
+      - TOKEN={{ DUCKDNS_TOKEN }}
     restart: unless-stopped
 
   - service_name: homeassistant
@@ -73,10 +72,10 @@ containers:
     include_global_env_vars: true
     image: ghcr.io/linuxserver/mariadb:110.4.17mariabionic-ls1
     environment:
-      - "MYSQL_ROOT_PASSWORD={{ HASSDB_ROOT_PASSWD }}"
-      - "MYSQL_DATABASE=homeassistant"
-      - "MYSQL_USER={{ HASSDB_USER }}"
-      - "MYSQL_PASSWORD={{ HASSDB_PASSWORD }}"
+      - MYSQL_ROOT_PASSWORD={{ HASSDB_ROOT_PASSWD }}
+      - MYSQL_DATABASE=homeassistant
+      - MYSQL_USER={{ HASSDB_USER }}
+      - MYSQL_PASSWORD={{ HASSDB_PASSWORD }}
     volumes:
       - "{{ appdata_path }}/homeassistant_db:/config"
     ports:
@@ -92,7 +91,7 @@ containers:
       - /etc/localtime:/etc/localtime:ro
       - "{{ appdata_path }}/node-red:/data"
       - "{{ volume_node_red_modules }}:/usr/src/node-red/node_modules"
-      - /etc/timezone:/etc/timezone:ro 
+      - /etc/timezone:/etc/timezone:ro
     depends_on:
       - mosquitto
     healthcheck:
@@ -130,7 +129,7 @@ containers:
       - --no-cacerts
 
 # volumes
-volume_node_red_modules: "node-red-modules"
+volume_node_red_modules: node-red-modules
 
 volumes:
   - volume_name: "{{ volume_node_red_modules }}"
