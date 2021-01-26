@@ -9,7 +9,6 @@
   - meta: refresh_inventory
     tags: always
 
-
 - hosts: all
   become: true
   tasks:
@@ -22,7 +21,7 @@
     - name: Update and upgrade apt packages
       apt:
         update_cache: true
-        cache_valid_time: 86400           # 86400 = One day
+        cache_valid_time: 86400     # 86400 = One day
         upgrade: dist
         autoremove: true
         purge: true
