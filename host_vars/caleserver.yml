@@ -147,7 +147,7 @@ containers:
     active: true
     include_global_env_vars: true
     container_name: homeassistant
-    image: homeassistant/raspberrypi4-homeassistant:2021.1.4
+    image: homeassistant/raspberrypi4-homeassistant:2021.1.5
     network_mode: host
     volumes:
       - "{{ appdata_path }}/homeassistant:/config"
@@ -270,7 +270,7 @@ containers:
 
   - service_name: mosquitto
     active: true
-    image: eclipse-mosquitto:2.0.5
+    image: eclipse-mosquitto:2.0
     restart: unless-stopped
     user: "{{ docker_compose_generator_uid }}:{{ docker_compose_generator_gid }}"
     ports:
