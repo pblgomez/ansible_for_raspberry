@@ -84,7 +84,7 @@ containers:
 
   - service_name: node-red
     active: true
-    image: nodered/node-red:1.2.5-minimal
+    image: nodered/node-red:1.2.7-minimal
     ports:
       - 1880:1880
     volumes:

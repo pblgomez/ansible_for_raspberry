@@ -283,7 +283,7 @@ containers:
   - service_name: ombi
     active: true
     include_global_env_vars: true
-    image: linuxserver/ombi:v3.0.5223-ls82
+    image: linuxserver/ombi:v3.0.5223-ls83
     ports:
       - 3579:3579
     volumes:
