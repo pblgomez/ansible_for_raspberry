@@ -147,7 +147,7 @@ containers:
     active: true
     include_global_env_vars: true
     container_name: homeassistant
-    image: homeassistant/raspberrypi4-homeassistant:2021.1.5
+    image: homeassistant/raspberrypi4-homeassistant:2021.2.1
     network_mode: host
     volumes:
       - "{{ appdata_path }}/homeassistant:/config"
@@ -204,7 +204,7 @@ containers:
     active: true
     include_global_env_vars: true
     container_name: jackett
-    image: linuxserver/jackett:v0.17.437-ls18
+    image: linuxserver/jackett:v0.17.456-ls19
     ports:
       - 9117:9117
     volumes:
@@ -251,7 +251,7 @@ containers:
 
   - service_name: node-red
     active: true
-    image: nodered/node-red:1.2.7-minimal
+    image: nodered/node-red:1.2.8-minimal
     ports:
       - 1880:1880
     volumes:
@@ -270,7 +270,7 @@ containers:
 
   - service_name: mosquitto
     active: true
-    image: eclipse-mosquitto:2.0
+    image: eclipse-mosquitto:2.0.7
     restart: unless-stopped
     user: "{{ docker_compose_generator_uid }}:{{ docker_compose_generator_gid }}"
     ports:
@@ -350,7 +350,7 @@ containers:
   - service_name: sonarr
     active: true
     include_global_env_vars: true
-    image: linuxserver/sonarr:2.0.0.5344-ls92
+    image: linuxserver/sonarr:2.0.0.5344-ls93
     ports:
       - 8989:8989
     volumes:

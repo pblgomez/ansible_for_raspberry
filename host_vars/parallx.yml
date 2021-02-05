@@ -50,7 +50,7 @@ containers:
     active: true
     include_global_env_vars: true
     container_name: homeassistant
-    image: homeassistant/raspberrypi3-homeassistant:2021.1.5
+    image: homeassistant/raspberrypi3-homeassistant:2021.2.1
     network_mode: host
     volumes:
       - "{{ appdata_path }}/homeassistant:/config"
@@ -84,7 +84,7 @@ containers:
 
   - service_name: node-red
     active: true
-    image: nodered/node-red:1.2.7-minimal
+    image: nodered/node-red:1.2.8-minimal
     ports:
       - 1880:1880
     volumes:
@@ -103,7 +103,7 @@ containers:
 
   - service_name: mosquitto
     active: true
-    image: eclipse-mosquitto:1.6
+    image: eclipse-mosquitto:2.0.7
     restart: unless-stopped
     user: "{{ docker_compose_generator_uid }}:{{ docker_compose_generator_gid }}"
     ports:
