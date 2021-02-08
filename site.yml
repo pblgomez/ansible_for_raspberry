@@ -58,14 +58,14 @@
     - name: Create docker-compose
       include_role:
         name: docker_compose_generator
-      tags: docker_compose
+      tags: docker-compose
 
 - hosts: caleserver
   tasks:
     - name: Create docker-compose
       include_role:
         name: docker_compose_generator
-      tags: docker_compose
+      tags: docker-compose
 
 
 - hosts: localhost

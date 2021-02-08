@@ -14,7 +14,7 @@
   ansible.builtin.file:
     path: '{{ docker_compose_generator_output_path }}'
     state: directory
-  tags: docker_compose
+  tags: docker-compose
 
 - name: write docker-compose file
   ansible.builtin.template:
@@ -22,13 +22,13 @@
     dest: '{{ docker_compose_generator_output_path }}/docker-compose.yml'
     owner: '{{ docker_compose_generator_uid }}'
     group: '{{ docker_compose_generator_gid }}'
-  tags: docker_compose
+  tags: docker-compose
 
 - name: Create and start services
   community.general.docker_compose:
     project_src: '~'
     build: false
-  tags: docker_compose
+  tags: docker-compose
 
 - name: Prune everything
   community.general.docker_prune:
