@@ -86,7 +86,7 @@ containers:
   - service_name: duckdns
     active: true
     include_global_env_vars: true
-    image: ghcr.io/linuxserver/duckdns:e60b35ff-ls64
+    image: ghcr.io/linuxserver/duckdns:43f38d73-ls66
     environment:
       - SUBDOMAINS={{ DUCKDNS_SUBDOMAINS }}
       - TOKEN={{ DUCKDNS_TOKEN }}
@@ -131,7 +131,7 @@ containers:
   - service_name: heimdall
     active: true
     include_global_env_vars: true
-    image: ghcr.io/linuxserver/heimdall:2.2.2-ls114
+    image: ghcr.io/linuxserver/heimdall:2.2.2-ls115
     ports:
       - 8080:80
     volumes:
@@ -204,7 +204,7 @@ containers:
     active: true
     include_global_env_vars: true
     container_name: jackett
-    image: ghcr.io/linuxserver/jackett:v0.17.474-ls19
+    image: ghcr.io/linuxserver/jackett:v0.17.484-ls20
     ports:
       - 9117:9117
     volumes:
