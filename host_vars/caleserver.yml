@@ -86,7 +86,7 @@ containers:
   - service_name: duckdns
     active: true
     include_global_env_vars: true
-    image: ghcr.io/linuxserver/duckdns:43f38d73-ls66
+    image: ghcr.io/linuxserver/duckdns:43f38d73-ls67
     environment:
       - SUBDOMAINS={{ DUCKDNS_SUBDOMAINS }}
       - TOKEN={{ DUCKDNS_TOKEN }}
@@ -131,7 +131,7 @@ containers:
   - service_name: heimdall
     active: true
     include_global_env_vars: true
-    image: ghcr.io/linuxserver/heimdall:2.2.2-ls115
+    image: ghcr.io/linuxserver/heimdall:2.2.2-ls116
     ports:
       - 8080:80
     volumes:
@@ -147,7 +147,7 @@ containers:
     active: true
     include_global_env_vars: true
     container_name: homeassistant
-    image: homeassistant/raspberrypi4-homeassistant:2021.2.1
+    image: homeassistant/raspberrypi4-homeassistant:2021.2.3
     network_mode: host
     volumes:
       - "{{ appdata_path }}/homeassistant:/config"
@@ -174,7 +174,7 @@ containers:
   - service_name: homeassistant_db
     active: true
     include_global_env_vars: true
-    image: ghcr.io/linuxserver/mariadb:110.4.17mariabionic-ls7
+    image: ghcr.io/linuxserver/mariadb:110.4.17mariabionic-ls11
     environment:
       - MYSQL_ROOT_PASSWORD={{ HASSDB_ROOT_PASSWD }}
       - MYSQL_DATABASE=homeassistant
@@ -237,7 +237,7 @@ containers:
   - service_name: nextcloud_db
     active: true
     include_global_env_vars: true
-    image: ghcr.io/linuxserver/mariadb:110.4.17mariabionic-ls1
+    image: ghcr.io/linuxserver/mariadb:110.4.17mariabionic-ls11
     environment:
       - MYSQL_ROOT_PASSWORD={{ NEXTC_DB_ROOT_PASSWORD }}
       - MYSQL_DATABASE=nextcloud
