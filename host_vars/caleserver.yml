@@ -28,7 +28,7 @@ containers:
     active: true
     include_global_env_vars: true
     container_name: bazarr
-    image: linuxserver/bazarr:v0.9.0.8-ls102
+    image: linuxserver/bazarr:v0.9.1-ls103
     ports:
       - 6767:6767
     volumes:
@@ -95,7 +95,7 @@ containers:
   - service_name: emby
     active: true
     include_global_env_vars: true
-    image: linuxserver/emby:arm64v8-4.5.4.0-ls74
+    image: linuxserver/emby:arm64v8-4.5.4.0-ls75
     devices:
       - /dev/vchiq:/dev/vchiq
       - /dev/video10:/dev/video10
@@ -131,7 +131,7 @@ containers:
   - service_name: heimdall
     active: true
     include_global_env_vars: true
-    image: ghcr.io/linuxserver/heimdall:2.2.2-ls116
+    image: ghcr.io/linuxserver/heimdall:2.2.2-ls117
     ports:
       - 8080:80
     volumes:
@@ -204,7 +204,7 @@ containers:
     active: true
     include_global_env_vars: true
     container_name: jackett
-    image: ghcr.io/linuxserver/jackett:v0.17.513-ls21
+    image: ghcr.io/linuxserver/jackett:v0.17.538-ls21
     ports:
       - 9117:9117
     volumes:
@@ -370,7 +370,7 @@ containers:
   - service_name: transmission
     active: true
     include_global_env_vars: true
-    image: linuxserver/transmission:3.00-r0-ls75
+    image: linuxserver/transmission:3.00-r2-ls77
     ports:
       - 9091:9091
       - 51413:51413
