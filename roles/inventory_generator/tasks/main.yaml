@@ -3,4 +3,5 @@
   ansible.builtin.template:
     src: inventory.yml.j2
     dest: '{{ playbook_dir }}/inventory.yml'
+  changed_when: false
   tags: always

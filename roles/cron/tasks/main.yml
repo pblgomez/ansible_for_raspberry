@@ -1,0 +1,37 @@
+---
+- name: Cron to clean old docker images
+  cron:
+    name: "Clean old docker images"
+    minute: "1"
+    hour: "1"
+    day: "1"
+    job: "/home/ubuntu/.local/bin/clean_docker.sh"
+  notify: restart cron
+  tags: cron
+
+- name: snapraid cron
+  cron:
+    name: "snapraid cron"
+    minute: "0"
+    hour: "4"
+    job: "/home/ubuntu/.local/bin/snapraid_sync_scrub.sh"
+  notify: restart cron
+  tags: cron
+
+- name: Cron delete old media files and transmission downloads
+  cron:
+    name: "Cron delete old media files and trasmission downloads"
+    minute: "0"
+    hour: "*/6"
+    job: "/home/ubuntu/.local/bin/delete_old.sh"
+  notify: restart cron
+  tags: cron
+
+- name: Cron remount failed disks
+  cron:
+    name: "Cron remount failed disks"
+    minute: "*/4"
+    hour: "*"
+    job: "/home/ubuntu/.scripts/failed_disk.sh"
+  notify: restart cron
+  tags: cron

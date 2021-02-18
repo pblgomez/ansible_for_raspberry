@@ -6,6 +6,7 @@
     include_role:
       name: inventory_generator
     tags: always
+
   - meta: refresh_inventory
     tags: always
 
@@ -62,6 +63,12 @@
 
 - hosts: caleserver
   tasks:
+    - name: Cron jobs
+      import_role:
+        name: cron
+      become: true
+      tags: cron
+
     - name: Create docker-compose
       include_role:
         name: docker_compose_generator
@@ -75,5 +82,6 @@
       file:
         path: inventory.yml
         state: absent
+      changed_when: false
       tags: always
 ...

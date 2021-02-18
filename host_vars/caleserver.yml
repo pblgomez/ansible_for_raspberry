@@ -86,7 +86,7 @@ containers:
   - service_name: duckdns
     active: true
     include_global_env_vars: true
-    image: ghcr.io/linuxserver/duckdns:43f38d73-ls67
+    image: ghcr.io/linuxserver/duckdns:e9c60fb5-ls68
     environment:
       - SUBDOMAINS={{ DUCKDNS_SUBDOMAINS }}
       - TOKEN={{ DUCKDNS_TOKEN }}
@@ -204,7 +204,7 @@ containers:
     active: true
     include_global_env_vars: true
     container_name: jackett
-    image: ghcr.io/linuxserver/jackett:v0.17.538-ls21
+    image: ghcr.io/linuxserver/jackett:v0.17.562-ls21
     ports:
       - 9117:9117
     volumes:
@@ -350,7 +350,7 @@ containers:
   - service_name: sonarr
     active: true
     include_global_env_vars: true
-    image: linuxserver/sonarr:2.0.0.5344-ls94
+    image: linuxserver/sonarr:2.0.0.5344-ls95
     ports:
       - 8989:8989
     volumes:
