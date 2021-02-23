@@ -50,8 +50,8 @@ containers:
     include_global_env_vars: true
     container_name: bitwarden
     image: bitwardenrs/server:1.19.0
-    ports:
-      - 9085:80
+    #ports:
+      #- 9085:80
     volumes:
       - "{{ appdata_path_cached }}/bitwarden:/data"
     depends_on:
@@ -95,7 +95,7 @@ containers:
   - service_name: emby
     active: true
     include_global_env_vars: true
-    image: linuxserver/emby:arm64v8-4.5.4.0-ls75
+    image: ghcr.io/linuxserver/emby:arm64v8-4.5.4.0-ls76
     devices:
       - /dev/vchiq:/dev/vchiq
       - /dev/video10:/dev/video10
@@ -131,7 +131,7 @@ containers:
   - service_name: heimdall
     active: true
     include_global_env_vars: true
-    image: ghcr.io/linuxserver/heimdall:2.2.2-ls117
+    image: ghcr.io/linuxserver/heimdall:2.2.2-ls118
     ports:
       - 8080:80
     volumes:
@@ -174,7 +174,7 @@ containers:
   - service_name: homeassistant_db
     active: true
     include_global_env_vars: true
-    image: ghcr.io/linuxserver/mariadb:110.4.17mariabionic-ls11
+    image: ghcr.io/linuxserver/mariadb:110.4.18mariabionic-ls12
     environment:
       - MYSQL_ROOT_PASSWORD={{ HASSDB_ROOT_PASSWD }}
       - MYSQL_DATABASE=homeassistant
@@ -204,7 +204,7 @@ containers:
     active: true
     include_global_env_vars: true
     container_name: jackett
-    image: ghcr.io/linuxserver/jackett:v0.17.562-ls21
+    image: ghcr.io/linuxserver/jackett:v0.17.580-ls23
     ports:
       - 9117:9117
     volumes:
@@ -220,8 +220,8 @@ containers:
   - service_name: nextcloud
     active: true
     image: nextcloud:20
-    ports:
-      - 9999:80
+    #ports:
+      #- 9999:80
     volumes:
       - "{{ appdata_path }}/nextcloud:/var/www/html"
     depends_on:
@@ -237,7 +237,7 @@ containers:
   - service_name: nextcloud_db
     active: true
     include_global_env_vars: true
-    image: ghcr.io/linuxserver/mariadb:110.4.17mariabionic-ls11
+    image: ghcr.io/linuxserver/mariadb:110.4.18mariabionic-ls12
     environment:
       - MYSQL_ROOT_PASSWORD={{ NEXTC_DB_ROOT_PASSWORD }}
       - MYSQL_DATABASE=nextcloud
@@ -283,7 +283,7 @@ containers:
   - service_name: ombi
     active: true
     include_global_env_vars: true
-    image: linuxserver/ombi:v3.0.5223-ls84
+    image: linuxserver/ombi:v3.0.5223-ls86
     ports:
       - 3579:3579
     volumes:
@@ -330,7 +330,7 @@ containers:
   - service_name: radarr
     active: true
     include_global_env_vars: true
-    image: ghcr.io/linuxserver/radarr:3.0.2.4552-ls94
+    image: ghcr.io/linuxserver/radarr:3.0.2.4552-ls95
     ports:
       - 7878:7878
     volumes:
