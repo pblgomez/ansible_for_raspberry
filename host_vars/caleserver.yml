@@ -204,7 +204,7 @@ containers:
     active: true
     include_global_env_vars: true
     container_name: jackett
-    image: ghcr.io/linuxserver/jackett:v0.17.580-ls23
+    image: ghcr.io/linuxserver/jackett:v0.17.606-ls23
     ports:
       - 9117:9117
     volumes:
@@ -312,6 +312,11 @@ containers:
       - 25826:25826/udp
     restart: unless-stopped
 
+  - service_name: radicale
+    active: true
+    restart: unless-stopped
+    image: tomsquest/docker-radicale
+
   - service_name: rancher
     active: false
     restart: unless-stopped
@@ -370,7 +375,7 @@ containers:
   - service_name: transmission
     active: true
     include_global_env_vars: true
-    image: linuxserver/transmission:3.00-r2-ls77
+    image: ghcr.io/linuxserver/transmission:3.00-r2-ls79
     ports:
       - 9091:9091
       - 51413:51413
