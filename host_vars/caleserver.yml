@@ -28,7 +28,7 @@ containers:
     active: true
     include_global_env_vars: true
     container_name: bazarr
-    image: linuxserver/bazarr:v0.9.1-ls103
+    image: ghcr.io/linuxserver/bazarr:v0.9.2-ls106
     ports:
       - 6767:6767
     volumes:
@@ -147,7 +147,7 @@ containers:
     active: true
     include_global_env_vars: true
     container_name: homeassistant
-    image: homeassistant/raspberrypi4-homeassistant:2021.2.3
+    image: homeassistant/raspberrypi4-homeassistant:2021.3.3
     network_mode: host
     volumes:
       - "{{ appdata_path }}/homeassistant:/config"
@@ -174,7 +174,7 @@ containers:
   - service_name: homeassistant_db
     active: true
     include_global_env_vars: true
-    image: ghcr.io/linuxserver/mariadb:110.4.18mariabionic-ls12
+    image: ghcr.io/linuxserver/mariadb:110.4.18mariabionic-ls13
     environment:
       - MYSQL_ROOT_PASSWORD={{ HASSDB_ROOT_PASSWD }}
       - MYSQL_DATABASE=homeassistant
@@ -204,7 +204,7 @@ containers:
     active: true
     include_global_env_vars: true
     container_name: jackett
-    image: ghcr.io/linuxserver/jackett:v0.17.611-ls23
+    image: ghcr.io/linuxserver/jackett:v0.17.677-ls24
     ports:
       - 9117:9117
     volumes:
@@ -237,7 +237,7 @@ containers:
   - service_name: nextcloud_db
     active: true
     include_global_env_vars: true
-    image: ghcr.io/linuxserver/mariadb:110.4.18mariabionic-ls12
+    image: ghcr.io/linuxserver/mariadb:110.4.18mariabionic-ls13
     environment:
       - MYSQL_ROOT_PASSWORD={{ NEXTC_DB_ROOT_PASSWORD }}
       - MYSQL_DATABASE=nextcloud
