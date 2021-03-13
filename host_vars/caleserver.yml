@@ -147,7 +147,7 @@ containers:
     active: true
     include_global_env_vars: true
     container_name: homeassistant
-    image: homeassistant/raspberrypi4-homeassistant:2021.3.3
+    image: homeassistant/raspberrypi4-homeassistant:2021.3.4
     network_mode: host
     volumes:
       - "{{ appdata_path }}/homeassistant:/config"
@@ -174,7 +174,7 @@ containers:
   - service_name: homeassistant_db
     active: true
     include_global_env_vars: true
-    image: ghcr.io/linuxserver/mariadb:110.4.18mariabionic-ls13
+    image: ghcr.io/linuxserver/mariadb:110.4.18mariabionic-ls14
     environment:
       - MYSQL_ROOT_PASSWORD={{ HASSDB_ROOT_PASSWD }}
       - MYSQL_DATABASE=homeassistant
@@ -191,7 +191,7 @@ containers:
 
   - service_name: homeassistant_metrics
     active: true
-    image: influxdb:1.8.4
+    image: influxdb:2.0.4-alpine
     user: "{{ docker_compose_generator_uid }}:{{ docker_compose_generator_gid }}"
     networks:
       automation:
@@ -237,7 +237,7 @@ containers:
   - service_name: nextcloud_db
     active: true
     include_global_env_vars: true
-    image: ghcr.io/linuxserver/mariadb:110.4.18mariabionic-ls13
+    image: ghcr.io/linuxserver/mariadb:110.4.18mariabionic-ls14
     environment:
       - MYSQL_ROOT_PASSWORD={{ NEXTC_DB_ROOT_PASSWORD }}
       - MYSQL_DATABASE=nextcloud
@@ -300,7 +300,7 @@ containers:
 
   - service_name: openwrt_metrics
     active: true
-    image: influxdb:1.8.4
+    image: influxdb:2.0.4-alpine
     user: "{{ docker_compose_generator_uid }}:{{ docker_compose_generator_gid }}"
     volumes:
       - "{{ appdata_path_cached }}/openwrt_metrics/db_data:/var/lib/influxdb"
@@ -355,7 +355,7 @@ containers:
   - service_name: sonarr
     active: true
     include_global_env_vars: true
-    image: ghcr.io/linuxserver/sonarr:2.0.0.5344-ls96
+    image: ghcr.io/linuxserver/sonarr:3.0.5.1144-ls98
     ports:
       - 8989:8989
     volumes:
