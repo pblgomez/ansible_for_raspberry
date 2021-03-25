@@ -204,7 +204,7 @@ containers:
     active: true
     include_global_env_vars: true
     container_name: jackett
-    image: ghcr.io/linuxserver/jackett:v0.17.737-ls24
+    image: ghcr.io/linuxserver/jackett:v0.17.788-ls25
     ports:
       - 9117:9117
     volumes:
