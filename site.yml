@@ -72,7 +72,7 @@
     - name: Create docker-compose
       include_role:
         name: docker_compose_generator
-      tags: docker-compose
+      tags: docker-compose,test
 
 
 - hosts: localhost

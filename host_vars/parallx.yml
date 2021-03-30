@@ -70,7 +70,7 @@ containers:
   - service_name: homeassistant_db
     active: true
     include_global_env_vars: true
-    image: ghcr.io/linuxserver/mariadb:110.4.18mariabionic-ls14
+    image: ghcr.io/linuxserver/mariadb:110.4.18mariabionic-ls15
     environment:
       - MYSQL_ROOT_PASSWORD={{ HASSDB_ROOT_PASSWD }}
       - MYSQL_DATABASE=homeassistant
