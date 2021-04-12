@@ -28,7 +28,7 @@ containers:
     active: true
     include_global_env_vars: true
     container_name: bazarr
-    image: ghcr.io/linuxserver/bazarr:v0.9.2-ls106
+    image: ghcr.io/linuxserver/bazarr:v0.9.3-ls109
     ports:
       - 6767:6767
     volumes:
@@ -50,8 +50,8 @@ containers:
     include_global_env_vars: true
     container_name: bitwarden
     image: bitwardenrs/server:1.20.0
-    #ports:
-      #- 9085:80
+    # ports:
+    #   - 9085:80
     volumes:
       - "{{ appdata_path_cached }}/bitwarden:/data"
     depends_on:
@@ -68,7 +68,7 @@ containers:
     active: true
     include_global_env_vars: true
     container_name: caddy
-    image: caddy:2.2.1-alpine
+    image: caddy:2.3.0-alpine
     ports:
       - 80:80
       - 443:443
@@ -86,7 +86,7 @@ containers:
   - service_name: duckdns
     active: true
     include_global_env_vars: true
-    image: ghcr.io/linuxserver/duckdns:3a3f0388-ls70
+    image: ghcr.io/linuxserver/duckdns:48732f94-ls72
     environment:
       - SUBDOMAINS={{ DUCKDNS_SUBDOMAINS }}
       - TOKEN={{ DUCKDNS_TOKEN }}
@@ -95,7 +95,7 @@ containers:
   - service_name: emby
     active: true
     include_global_env_vars: true
-    image: ghcr.io/linuxserver/emby:arm64v8-4.5.4.0-ls76
+    image: ghcr.io/linuxserver/emby:arm64v8-4.5.4.0-ls79
     devices:
       - /dev/vchiq:/dev/vchiq
       - /dev/video10:/dev/video10
@@ -131,7 +131,7 @@ containers:
   - service_name: heimdall
     active: true
     include_global_env_vars: true
-    image: ghcr.io/linuxserver/heimdall:2.2.2-ls118
+    image: ghcr.io/linuxserver/heimdall:2.2.2-ls122
     ports:
       - 8080:80
     volumes:
@@ -174,7 +174,7 @@ containers:
   - service_name: homeassistant_db
     active: true
     include_global_env_vars: true
-    image: ghcr.io/linuxserver/mariadb:110.4.18mariabionic-ls15
+    image: ghcr.io/linuxserver/mariadb:110.4.18mariabionic-ls16
     environment:
       - MYSQL_ROOT_PASSWORD={{ HASSDB_ROOT_PASSWD }}
       - MYSQL_DATABASE=homeassistant
@@ -204,7 +204,7 @@ containers:
     active: true
     include_global_env_vars: true
     container_name: jackett
-    image: ghcr.io/linuxserver/jackett:v0.17.788-ls25
+    image: ghcr.io/linuxserver/jackett:v0.17.876-ls27
     ports:
       - 9117:9117
     volumes:
@@ -220,8 +220,8 @@ containers:
   - service_name: nextcloud
     active: true
     image: nextcloud:20
-    #ports:
-      #- 9999:80
+    # ports:
+    #   - 9999:80
     volumes:
       - "{{ appdata_path }}/nextcloud:/var/www/html"
     depends_on:
@@ -237,7 +237,7 @@ containers:
   - service_name: nextcloud_db
     active: true
     include_global_env_vars: true
-    image: ghcr.io/linuxserver/mariadb:110.4.18mariabionic-ls15
+    image: ghcr.io/linuxserver/mariadb:110.4.18mariabionic-ls16
     environment:
       - MYSQL_ROOT_PASSWORD={{ NEXTC_DB_ROOT_PASSWORD }}
       - MYSQL_DATABASE=nextcloud
@@ -270,7 +270,7 @@ containers:
 
   - service_name: mosquitto
     active: true
-    image: eclipse-mosquitto:2.0.7
+    image: eclipse-mosquitto:2.0.10
     restart: unless-stopped
     user: "{{ docker_compose_generator_uid }}:{{ docker_compose_generator_gid }}"
     ports:
@@ -283,7 +283,7 @@ containers:
   - service_name: ombi
     active: true
     include_global_env_vars: true
-    image: linuxserver/ombi:v3.0.5223-ls86
+    image: ghcr.io/linuxserver/ombi:v3.0.5223-ls89
     ports:
       - 3579:3579
     volumes:
@@ -335,7 +335,7 @@ containers:
   - service_name: radarr
     active: true
     include_global_env_vars: true
-    image: ghcr.io/linuxserver/radarr:3.0.2.4552-ls97
+    image: ghcr.io/linuxserver/radarr:3.0.2.4552-ls98
     ports:
       - 7878:7878
     volumes:
@@ -375,7 +375,7 @@ containers:
   - service_name: transmission
     active: true
     include_global_env_vars: true
-    image: ghcr.io/linuxserver/transmission:3.00-r2-ls81
+    image: ghcr.io/linuxserver/transmission:3.00-r2-ls82
     ports:
       - 9091:9091
       - 51413:51413

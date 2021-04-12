@@ -37,5 +37,5 @@
     images_filters:
       dangling: false
       until: 7m
-    volumes: yes
-  tags: docker-compose, test
+    volumes: true
+  tags: docker-compose
