@@ -10,4 +10,18 @@ jobs:
       - name: 'Checkout'
         uses: actions/checkout@master
       - name: 'Yamllint'
-        uses: karancode/yamllint-github-action@master
+        uses: ibiqlik/action-yamllint@v3
+        with:
+          file_or_dir: myfolder/*values*.yaml
+          config_file: .yamllint.yml
+          config_data: |
+            extends: default
+            rules:
+              truthy:
+                allowed-values: ['true', 'false', 'on']
+              line-length:
+                max: 160
+                allow-non-breakable-inline-mappings: true
+                level: warning
+              document-start:
+                present: true
