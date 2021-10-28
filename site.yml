@@ -13,11 +13,11 @@
 - hosts: all
   become: true
   tasks:
-    - name: Ensure ansible user accepts the SSH key
-      authorized_key:
-        user: '{{ ansible_user }}'
-        key: "{{ lookup('file', '~/.ssh/id_ed25519.pub') }}"
-        state: present
+    # - name: Ensure ansible user accepts the SSH key
+      # authorized_key:
+        # user: '{{ ansible_user }}'
+        # key: "{{ lookup('file', '~/.ssh/id_ed25519.pub') }}"
+        # state: present
 
     - name: Update and upgrade apt packages
       apt:
@@ -28,7 +28,7 @@
         purge: true
 
 
-- hosts: parallx
+- hosts: casaesperanza
   vars:
     dirs_to_backup:
       - config/caddy

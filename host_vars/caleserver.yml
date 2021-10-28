@@ -28,7 +28,7 @@ containers:
     active: true
     include_global_env_vars: true
     container_name: bazarr
-    image: ghcr.io/linuxserver/bazarr:v0.9.4-ls112
+    image: ghcr.io/linuxserver/bazarr:v1.0.0-ls134
     ports:
       - 6767:6767
     volumes:
@@ -86,7 +86,7 @@ containers:
   - service_name: duckdns
     active: true
     include_global_env_vars: true
-    image: ghcr.io/linuxserver/duckdns:48732f94-ls72
+    image: ghcr.io/linuxserver/duckdns:5679a6ee-ls88
     environment:
       - SUBDOMAINS={{ DUCKDNS_SUBDOMAINS }}
       - TOKEN={{ DUCKDNS_TOKEN }}
@@ -147,7 +147,7 @@ containers:
     active: true
     include_global_env_vars: true
     container_name: homeassistant
-    image: homeassistant/raspberrypi4-homeassistant:2021.4.6
+    image: homeassistant/raspberrypi4-homeassistant:2021.10.6
     network_mode: host
     volumes:
       - "{{ appdata_path }}/homeassistant:/config"
@@ -204,7 +204,7 @@ containers:
     active: true
     include_global_env_vars: true
     container_name: jackett
-    image: ghcr.io/linuxserver/jackett:v0.17.996-ls31
+    image: ghcr.io/linuxserver/jackett:v0.19.84-ls48
     ports:
       - 9117:9117
     volumes:
@@ -284,7 +284,7 @@ containers:
   - service_name: ombi
     active: true
     include_global_env_vars: true
-    image: ghcr.io/linuxserver/ombi:v4.0.1342-ls94
+    image: ghcr.io/linuxserver/ombi:v4.0.1468-ls108
     ports:
       - 3579:3579
     volumes:
@@ -336,7 +336,7 @@ containers:
   - service_name: radarr
     active: true
     include_global_env_vars: true
-    image: ghcr.io/linuxserver/radarr:3.2.0.5048-ls104
+    image: ghcr.io/linuxserver/radarr:3.2.2.5080-ls119
     ports:
       - 7878:7878
     volumes:
@@ -376,7 +376,7 @@ containers:
   - service_name: transmission
     active: true
     include_global_env_vars: true
-    image: ghcr.io/linuxserver/transmission:3.00-r2-ls87
+    image: ghcr.io/linuxserver/transmission:3.00-r2-ls105
     ports:
       - 9091:9091
       - 51413:51413
