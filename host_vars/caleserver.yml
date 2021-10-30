@@ -174,7 +174,7 @@ containers:
   - service_name: homeassistant_db
     active: true
     include_global_env_vars: true
-    image: ghcr.io/linuxserver/mariadb:110.4.18mariabionic-ls16
+    image: ghcr.io/linuxserver/mariadb:alpine-10.5.12-r0-ls39
     environment:
       - MYSQL_ROOT_PASSWORD={{ HASSDB_ROOT_PASSWD }}
       - MYSQL_DATABASE=homeassistant
@@ -271,7 +271,7 @@ containers:
 
   - service_name: mosquitto
     active: true
-    image: eclipse-mosquitto:2.0.10
+    image: eclipse-mosquitto:2.0.13
     restart: unless-stopped
     user: "{{ docker_compose_generator_uid }}:{{ docker_compose_generator_gid }}"
     ports:
