@@ -95,7 +95,7 @@ containers:
   - service_name: emby
     active: true
     include_global_env_vars: true
-    image: ghcr.io/linuxserver/emby:arm64v8-4.5.4.0-ls80
+    image: ghcr.io/linuxserver/emby:4.6.4.0-ls100
     devices:
       - /dev/vchiq:/dev/vchiq
       - /dev/video10:/dev/video10
@@ -336,7 +336,7 @@ containers:
   - service_name: radarr
     active: true
     include_global_env_vars: true
-    image: ghcr.io/linuxserver/radarr:3.2.2.5080-ls119
+    image: ghcr.io/linuxserver/radarr:3.2.2.5080-ls120
     ports:
       - 7878:7878
     volumes:
