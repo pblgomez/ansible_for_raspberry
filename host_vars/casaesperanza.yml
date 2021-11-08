@@ -50,7 +50,7 @@ containers:
     active: true
     include_global_env_vars: true
     container_name: homeassistant
-    image: homeassistant/raspberrypi3-homeassistant:2021.5.4
+    image: homeassistant/raspberrypi3-homeassistant:2021.7.4
     network_mode: host
     volumes:
       - "{{ appdata_path }}/homeassistant:/config"
@@ -70,7 +70,7 @@ containers:
   - service_name: homeassistant_db
     active: true
     include_global_env_vars: true
-    image: ghcr.io/linuxserver/mariadb:110.4.18mariabionic-ls16
+    image: ghcr.io/linuxserver/mariadb:alpine-10.5.12-r0-ls39
     environment:
       - MYSQL_ROOT_PASSWORD={{ HASSDB_ROOT_PASSWD }}
       - MYSQL_DATABASE=homeassistant

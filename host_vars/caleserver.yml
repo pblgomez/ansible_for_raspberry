@@ -95,7 +95,7 @@ containers:
   - service_name: emby
     active: true
     include_global_env_vars: true
-    image: ghcr.io/linuxserver/emby:arm64v8-4.5.4.0-ls80
+    image: ghcr.io/linuxserver/emby:4.6.4.0-ls100
     devices:
       - /dev/vchiq:/dev/vchiq
       - /dev/video10:/dev/video10
@@ -147,7 +147,7 @@ containers:
     active: true
     include_global_env_vars: true
     container_name: homeassistant
-    image: homeassistant/raspberrypi4-homeassistant:2021.10.6
+    image: homeassistant/raspberrypi4-homeassistant:2021.10.7
     network_mode: host
     volumes:
       - "{{ appdata_path }}/homeassistant:/config"
@@ -204,7 +204,7 @@ containers:
     active: true
     include_global_env_vars: true
     container_name: jackett
-    image: ghcr.io/linuxserver/jackett:v0.19.84-ls48
+    image: ghcr.io/linuxserver/jackett:v0.19.192-ls50
     ports:
       - 9117:9117
     volumes:
@@ -237,7 +237,7 @@ containers:
   - service_name: nextcloud_db
     active: true
     include_global_env_vars: true
-    image: ghcr.io/linuxserver/mariadb:110.4.18mariabionic-ls16
+    image: ghcr.io/linuxserver/mariadb:alpine-10.5.12-r0-ls39
     environment:
       - MYSQL_ROOT_PASSWORD={{ NEXTC_DB_ROOT_PASSWORD }}
       - MYSQL_DATABASE=nextcloud
@@ -336,7 +336,7 @@ containers:
   - service_name: radarr
     active: true
     include_global_env_vars: true
-    image: ghcr.io/linuxserver/radarr:3.2.2.5080-ls119
+    image: ghcr.io/linuxserver/radarr:3.2.2.5080-ls120
     ports:
       - 7878:7878
     volumes:
@@ -356,7 +356,7 @@ containers:
   - service_name: sonarr
     active: true
     include_global_env_vars: true
-    image: ghcr.io/linuxserver/sonarr:3.0.6.1196-ls104
+    image: ghcr.io/linuxserver/sonarr:3.0.6.1342-ls127
     ports:
       - 8989:8989
     volumes:
