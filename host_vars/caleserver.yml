@@ -13,6 +13,9 @@ NEXTC_DB_ROOT_PASSWORD: "{% for item in the_group %}{% if item.name == the_host_
 NEXTC_DB_USER: "{% for item in the_group %}{% if item.name == the_host_name %}{{ item.vars[0]['NEXTC_DB_USER'] }}{% endif %}{% endfor %}"
 NEXTC_DB_PASSWORD: "{% for item in the_group %}{% if item.name == the_host_name %}{{ item.vars[0]['NEXTC_DB_PASSWORD'] }}{% endif %}{% endfor %}"
 
+WEBDAV_USER: "{% for item in the_group %}{% if item.name == the_host_name %}{{ item.vars[0]['WEBDAV_USER'] }}{% endif %}{% endfor %}"
+WEBDAV_PASSWORD: "{% for item in the_group %}{% if item.name == the_host_name %}{{ item.vars[0]['WEBDAV_PASSWORD'] }}{% endif %}{% endfor %}"
+
 global_env_vars:
   - PUID=1000
   - PGID=1000
@@ -391,6 +394,18 @@ containers:
       timeout: 10s
       retries: 5
     restart: unless-stopped
+
+  - service_name: webdav
+    active: true
+    include_global_env_vars: true
+    image: ugeek/webdav:arm-alpine
+    ports:
+      - 8081:80
+    environment:
+      - "USERNAME={{ WEBDAV_USER }}"
+      - "PASSWORD={{ WEBDAV_PASSWORD }}"
+    volumes:
+      - "{{ appdata_path }}/webdav:/data"
 
 # volumes
 volume_node_red_modules: node-red-modules
