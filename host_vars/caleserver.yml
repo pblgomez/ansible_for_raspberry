@@ -220,6 +220,18 @@ containers:
       retries: 5
     restart: unless-stopped
 
+  - service_name: joplin-webdav
+    active: true
+    include_global_env_vars: true
+    image: ugeek/webdav:arm-alpine
+    ports:
+      - 8081:80
+    environment:
+      - "USERNAME={{ WEBDAV_USER }}"
+      - "PASSWORD={{ WEBDAV_PASSWORD }}"
+    volumes:
+      - "{{ appdata_path }}/joplin-webdav:/data"
+
   - service_name: nextcloud
     active: true
     image: nextcloud:20
@@ -356,6 +368,15 @@ containers:
       retries: 5
     restart: unless-stopped
 
+  - service_name: radicale
+    active: true
+    include_global_env_vars: true
+    image: tomsquest/docker-radicale:arm64.3.0.6.4
+    ports:
+      - 5232:5232
+    volumes:
+      - "{{ appdata_path }}/radicale:/data"
+
   - service_name: sonarr
     active: true
     include_global_env_vars: true
@@ -395,17 +416,6 @@ containers:
       retries: 5
     restart: unless-stopped
 
-  - service_name: webdav
-    active: true
-    include_global_env_vars: true
-    image: ugeek/webdav:arm-alpine
-    ports:
-      - 8081:80
-    environment:
-      - "USERNAME={{ WEBDAV_USER }}"
-      - "PASSWORD={{ WEBDAV_PASSWORD }}"
-    volumes:
-      - "{{ appdata_path }}/webdav:/data"
 
 # volumes
 volume_node_red_modules: node-red-modules
