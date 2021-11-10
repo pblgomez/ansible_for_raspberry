@@ -71,7 +71,7 @@ containers:
     active: true
     include_global_env_vars: true
     container_name: caddy
-    image: caddy:2.3.0-alpine
+    image: caddy:2.4.6-alpine
     ports:
       - 80:80
       - 443:443
