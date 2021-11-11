@@ -233,7 +233,7 @@ containers:
       - "{{ appdata_path }}/joplin-webdav:/data"
 
   - service_name: nextcloud
-    active: true
+    active: false
     image: nextcloud:20
     # ports:
     #   - 9999:80
@@ -250,7 +250,7 @@ containers:
     restart: unless-stopped
 
   - service_name: nextcloud_db
-    active: true
+    active: false
     include_global_env_vars: true
     image: ghcr.io/linuxserver/mariadb:alpine-10.5.12-r0-ls39
     environment:
