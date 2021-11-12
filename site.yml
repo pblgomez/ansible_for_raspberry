@@ -38,24 +38,6 @@
       - config/node-red
       - wireguard
   tasks:
-    - name: Backup of directories ( create local dirs )
-      tags: backup
-      file:
-        path: /home/{{ lookup('env', 'USER') }}/Documents/HASS/{{ inventory_hostname }}/{{ item }}
-        state: directory
-        mode: 0755
-      delegate_to: localhost
-      with_items: '{{ dirs_to_backup }}'
-
-    - name: Backup of directories
-      tags: backup
-      ansible.posix.synchronize:
-        mode: pull
-        src: '{{ item }}'
-        dest: /home/{{ lookup('env', 'USER') }}/Documents/HASS/{{ inventory_hostname }}/{{ item }}/../
-        delete: true
-      with_items: '{{ dirs_to_backup }}'
-
     - name: Create docker-compose
       include_role:
         name: docker_compose_generator
