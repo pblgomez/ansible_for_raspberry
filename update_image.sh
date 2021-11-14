@@ -1,4 +1,4 @@
-#!/usr/bin/env sh
+#!/usr/bin/env bash
 #
 #    _ \  |      |
 #   |   | __ \   |  Pablo Gómez
@@ -9,4 +9,4 @@
 
 [ -z "$1" ] && [ -z "$2" ] && echo "Usage example: <command> nodered/node-red nodered/node-red:1.2.8-minimal" && exit
 
-sed -i "s|${1}:.*|${2}|g" host_vars/* | grep nodered
+sed -i "s|${1}:.*|${2}|g" host_vars/* | cat host_vars/* | grep "$1"
