@@ -98,7 +98,7 @@ containers:
   - service_name: emby
     active: true
     include_global_env_vars: true
-    image: ghcr.io/linuxserver/emby:4.6.4.0-ls100
+    image: ghcr.io/linuxserver/emby:4.6.4.0-ls101
     devices:
       - /dev/vchiq:/dev/vchiq
       - /dev/video10:/dev/video10
@@ -134,7 +134,7 @@ containers:
   - service_name: heimdall
     active: true
     include_global_env_vars: true
-    image: ghcr.io/linuxserver/heimdall:2.2.2-ls125
+    image: ghcr.io/linuxserver/heimdall:2.2.2-ls149
     ports:
       - 8080:80
     volumes:
