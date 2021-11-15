@@ -177,7 +177,7 @@ containers:
   - service_name: homeassistant_db
     active: true
     include_global_env_vars: true
-    image: ghcr.io/linuxserver/mariadb:alpine-10.5.12-r0-ls39
+    image: ghcr.io/linuxserver/mariadb:10.5.13-r0-ls43
     environment:
       - MYSQL_ROOT_PASSWORD={{ HASSDB_ROOT_PASSWD }}
       - MYSQL_DATABASE=homeassistant
@@ -252,7 +252,7 @@ containers:
   - service_name: nextcloud_db
     active: false
     include_global_env_vars: true
-    image: ghcr.io/linuxserver/mariadb:alpine-10.5.12-r0-ls39
+    image: ghcr.io/linuxserver/mariadb:10.5.13-r0-ls43
     environment:
       - MYSQL_ROOT_PASSWORD={{ NEXTC_DB_ROOT_PASSWORD }}
       - MYSQL_DATABASE=nextcloud
