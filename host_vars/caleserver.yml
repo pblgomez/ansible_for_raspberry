@@ -76,10 +76,10 @@ containers:
       - 80:80
       - 443:443
     volumes:
-      - /var/run/docker.sock:/tmp/docker.sock:ro                            # For docker
-      - "{{ appdata_path }}/caddy/Caddyfile:/etc/caddy/Caddyfile"           # Caddyfile
-      - "{{ appdata_path }}/caddy/data:{{ container_config_path }}/caddy"   # certificates
-      - "{{ appdata_path }}/caddy/config:{{ container_config_path }}"       # json
+      - /var/run/docker.sock:/tmp/docker.sock:ro                          # For docker
+      - "{{ appdata_path }}/caddy/Caddyfile:/etc/caddy/Caddyfile"         # Caddyfile
+      - "{{ appdata_path }}/caddy/data:/data"                             # certificates
+      - "{{ appdata_path }}/caddy/config:{{ container_config_path }}"     # json
     environment:
       - DOMAIN={{ DOMAIN }}
     depends_on:
