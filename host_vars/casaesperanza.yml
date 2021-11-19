@@ -50,7 +50,7 @@ containers:
     active: true
     include_global_env_vars: true
     container_name: homeassistant
-    image: homeassistant/raspberrypi3-homeassistant:2021.7.4
+    image: homeassistant/raspberrypi3-homeassistant:2021.8.8
     network_mode: host
     volumes:
       - "{{ appdata_path }}/homeassistant:/config"
