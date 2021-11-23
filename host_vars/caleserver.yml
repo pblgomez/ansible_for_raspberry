@@ -286,7 +286,7 @@ containers:
 
   - service_name: mosquitto
     active: true
-    image: eclipse-mosquitto:2.0.13
+    image: eclipse-mosquitto:2.0.14
     restart: unless-stopped
     user: "{{ docker_compose_generator_uid }}:{{ docker_compose_generator_gid }}"
     ports:
