@@ -328,6 +328,24 @@ containers:
       - 25826:25826/udp
     restart: unless-stopped
 
+  - service_name: plex
+    active: true
+    image: ghcr.io/linuxserver/plex:1.25.2
+    volumes:
+      - "{{ appdata_path_cached }}/plex:/config"
+      - "{{ video_path }}/Movies:/movies"
+      - "{{ video_path }}/TV:/tv"
+    network_mode: host
+    include_global_env_vars: true
+    environment:
+      - VERSION=docker
+      # - PLEX_CLAIM= #optional
+    devices:
+      - /dev/vchiq:/dev/vchiq
+      - /dev/video10:/dev/video10
+      - /dev/video11:/dev/video11
+      - /dev/video12:/dev/video12
+
   - service_name: radicale
     active: true
     restart: unless-stopped
