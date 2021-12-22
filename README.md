@@ -8,6 +8,15 @@ Ansible that:
 - Starts up everything
 - Cleans old docker images
 
+# Update images
+
+To update images you can use something like this:
+
+```
+./update_image.sh raspberrypi4-homeassistant raspberrypi4-homeassistant:2021.11.5
+```
+
+
 TODO:
 
 - Security
