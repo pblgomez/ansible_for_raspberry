@@ -23,6 +23,7 @@ global_env_vars:
 appdata_path: /media/storage/config
 appdata_path_cached: /media/cached_storage/config   # Because of mergerfs
 video_path: /media/storage/Videos
+documents_path: /media/storage/Documents
 downloads_path: /media/storage/Downloads
 container_config_path: /config
 
@@ -107,7 +108,7 @@ containers:
     ports:
       - 8096:8096
     volumes:
-      - "{{ appdata_path_cached }}/emby:/config"
+      - "{{ appdata_path_cached }}/emby:{{ container_config_path }}"
       - "{{ video_path }}/Movies:/movies"
       - "{{ video_path }}/TV:/tvshows"
       - /opt/vc/lib:/opt/vc/lib
@@ -267,7 +268,7 @@ containers:
   - service_name: node-red
     active: true
     include_global_env_vars: true
-    image: nodered/node-red:1.3.1-minimal
+    image: nodered/node-red:1.3.2-minimal
     ports:
       - 1880:1880
     volumes:
@@ -336,8 +337,8 @@ containers:
     ports:
       - 8000:8000
     volumes:
-      - "{{ appdata_path_cached }}/paperless-ng/config:/config"
-      - "{{ appdata_path }}/Documents:/data"
+      - "{{ appdata_path_cached }}/paperless-ng:{{ container_config_path }}"
+      - "{{ documents_path }}:/data"
 
   - service_name: plex
     active: true
