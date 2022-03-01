@@ -97,7 +97,7 @@ containers:
     restart: unless-stopped
 
   - service_name: emby
-    active: true
+    active: false
     include_global_env_vars: true
     image: ghcr.io/linuxserver/emby:arm64v8-4.5.4.0-ls80
     devices:
@@ -300,7 +300,7 @@ containers:
   - service_name: ombi
     active: true
     include_global_env_vars: true
-    image: ghcr.io/linuxserver/ombi:v4.3.3-ls110
+    image: ghcr.io/linuxserver/ombi:v4.10.2-ls115
     ports:
       - 3579:3579
     volumes:
@@ -384,7 +384,7 @@ containers:
   - service_name: radarr
     active: true
     include_global_env_vars: true
-    image: ghcr.io/linuxserver/radarr:3.2.2.5080-ls120
+    image: ghcr.io/linuxserver/radarr:4.0.4.5922-ls132
     ports:
       - 7878:7878
     volumes:
@@ -413,7 +413,7 @@ containers:
   - service_name: sonarr
     active: true
     include_global_env_vars: true
-    image: ghcr.io/linuxserver/sonarr:3.0.6.1342-ls128
+    image: ghcr.io/linuxserver/sonarr:3.0.6.1342-ls135
     ports:
       - 8989:8989
     volumes:
