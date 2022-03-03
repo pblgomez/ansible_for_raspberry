@@ -135,7 +135,7 @@ containers:
   - service_name: heimdall
     active: true
     include_global_env_vars: true
-    image: ghcr.io/linuxserver/heimdall:2.2.2-ls149
+    image: ghcr.io/linuxserver/heimdall:2.2.2-ls158
     ports:
       - 8080:80
     volumes:
