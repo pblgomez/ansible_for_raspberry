@@ -384,7 +384,7 @@ containers:
   - service_name: radarr
     active: true
     include_global_env_vars: true
-    image: ghcr.io/linuxserver/radarr:4.0.4.5922-ls132
+    image: ghcr.io/linuxserver/radarr:4.0.5.5981-ls133
     ports:
       - 7878:7878
     volumes:
