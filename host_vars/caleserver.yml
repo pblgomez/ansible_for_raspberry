@@ -433,7 +433,7 @@ containers:
   - service_name: transmission
     active: true
     include_global_env_vars: true
-    image: ghcr.io/linuxserver/transmission:3.00-r2-ls105
+    image: ghcr.io/linuxserver/transmission:3.00-r5-ls115
     ports:
       - 9091:9091
       - 51413:51413
