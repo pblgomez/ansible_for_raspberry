@@ -135,7 +135,7 @@ containers:
   - service_name: heimdall
     active: true
     include_global_env_vars: true
-    image: ghcr.io/linuxserver/heimdall:2.2.2-ls158
+    image: ghcr.io/linuxserver/heimdall:2.2.2
     ports:
       - 8080:80
     volumes:
@@ -208,7 +208,7 @@ containers:
     active: true
     include_global_env_vars: true
     container_name: jackett
-    image: ghcr.io/linuxserver/jackett:v0.20.667-ls57
+    image: ghcr.io/linuxserver/jackett:0.20.703
     ports:
       - 9117:9117
     volumes:
