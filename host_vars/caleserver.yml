@@ -32,7 +32,7 @@ containers:
     active: true
     include_global_env_vars: true
     container_name: bazarr
-    image: ghcr.io/linuxserver/bazarr:v1.0.3-ls146
+    image: ghcr.io/linuxserver/bazarr:1.0.3
     ports:
       - 6767:6767
     volumes:
