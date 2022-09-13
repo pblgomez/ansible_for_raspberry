@@ -32,7 +32,7 @@ containers:
     active: true
     include_global_env_vars: true
     container_name: bazarr
-    image: ghcr.io/linuxserver/bazarr:1.0.3
+    image: ghcr.io/linuxserver/bazarr:1.1.1
     ports:
       - 6767:6767
     volumes:
@@ -53,9 +53,7 @@ containers:
     active: true
     include_global_env_vars: true
     container_name: bitwarden
-    image: vaultwarden/server:1.21.0
-    # ports:
-    #   - 9085:80
+    image: vaultwarden/server:1.25.2-alpine
     volumes:
       - "{{ appdata_path_cached }}/bitwarden:/data"
     depends_on:
@@ -72,7 +70,7 @@ containers:
     active: true
     include_global_env_vars: true
     container_name: caddy
-    image: caddy:2.4.6-alpine
+    image: caddy:2.5.2-alpine
     ports:
       - 80:80
       - 443:443
