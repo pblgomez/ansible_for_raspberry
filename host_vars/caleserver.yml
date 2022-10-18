@@ -296,7 +296,7 @@ containers:
       - "{{ appdata_path }}/mosquitto:/mosquitto/data"
 
   - service_name: ombi
-    active: true
+    active: false
     include_global_env_vars: true
     image: ghcr.io/linuxserver/ombi:v4.10.2-ls115
     ports:
@@ -329,7 +329,7 @@ containers:
 
   # docker exec -it paperless-ng sudo apt-get install -y python3-dev build-essential && pip install pikepdf==2.16.1 --force-reinstall && sudo apt-get purge -y python3-dev build-essential
   - service_name: paperless-ng
-    active: true
+    active: false
     image: linuxserver/paperless-ng
     include_global_env_vars: true
     ports:
