@@ -360,7 +360,7 @@ containers:
   - service_name: radicale
     active: true
     restart: unless-stopped
-    image: tomsquest/docker-radicale
+    image: tomsquest/docker-radicale:3.1.8.0
     volumes:
       - "{{ appdata_path }}/radicale:/data"
 
