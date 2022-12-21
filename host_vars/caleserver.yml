@@ -411,7 +411,7 @@ containers:
   - service_name: sonarr
     active: true
     include_global_env_vars: true
-    image: ghcr.io/linuxserver/sonarr:3.0.6.1342-ls135
+    image: ghcr.io/linuxserver/sonarr:3.0.9
     ports:
       - 8989:8989
     volumes:
