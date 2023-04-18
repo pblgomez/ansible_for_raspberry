@@ -53,7 +53,7 @@ containers:
     active: true
     include_global_env_vars: true
     container_name: bitwarden
-    image: vaultwarden/server:1.25.2-alpine
+    image: vaultwarden/server:1.28.1-alpine
     volumes:
       - "{{ appdata_path_cached }}/bitwarden:/data"
     depends_on:
@@ -70,7 +70,7 @@ containers:
     active: true
     include_global_env_vars: true
     container_name: caddy
-    image: caddy:2.5.2-alpine
+    image: caddy:2.6.4-alpine
     ports:
       - 80:80
       - 443:443
@@ -88,7 +88,7 @@ containers:
   - service_name: duckdns
     active: true
     include_global_env_vars: true
-    image: ghcr.io/linuxserver/duckdns:version-445a951b
+    image: ghcr.io/linuxserver/duckdns:version-19b6f505
     environment:
       - SUBDOMAINS={{ DUCKDNS_SUBDOMAINS }}
       - TOKEN={{ DUCKDNS_TOKEN }}
@@ -149,7 +149,7 @@ containers:
     active: true
     include_global_env_vars: true
     container_name: homeassistant
-    image: homeassistant/raspberrypi4-homeassistant:2022.10.5
+    image: homeassistant/raspberrypi4-homeassistant:2023.2.5
     network_mode: host
     volumes:
       - "{{ appdata_path }}/homeassistant:/config"
@@ -218,6 +218,26 @@ containers:
       timeout: 10s
       retries: 5
     restart: unless-stopped
+
+
+  - service_name: jellyfin
+    active: true
+    include_global_env_vars: true
+    image: linuxserver/jellyfin:10.8.5
+    environment:
+      - JELLYFIN_PublishedServerUrl=192.168.99.100  # optional
+    ports:
+      - 8096:8096
+      - 8920:8920  # optional
+      - 7359:7359/udp  # optional
+      # - 1900:1900/udp  #optional
+    volumes:
+      - "{{ appdata_path_cached }}/jellyfin:/config"
+      - "{{ video_path }}/Movies:/data/movies"
+      - /MoviesKids:/data/movieskids
+      - "{{ video_path }}/TV:/data/tv"
+      - /nfs/YT:/data/youtube
+
 
   - service_name: joplin-webdav
     active: true
