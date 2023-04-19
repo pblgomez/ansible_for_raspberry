@@ -119,7 +119,7 @@ containers:
 
   - service_name: grafana
     active: true
-    image: grafana/grafana:9.2.0
+    image: grafana/grafana:9.4.7
     user: "{{ docker_compose_generator_uid }}:{{ docker_compose_generator_gid }}"
     ports:
       - 3000:3000
@@ -133,7 +133,7 @@ containers:
   - service_name: heimdall
     active: true
     include_global_env_vars: true
-    image: ghcr.io/linuxserver/heimdall:2.4.13
+    image: ghcr.io/linuxserver/heimdall:2.5.6
     ports:
       - 8080:80
     volumes:
