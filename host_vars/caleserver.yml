@@ -53,7 +53,7 @@ containers:
     active: true
     include_global_env_vars: true
     container_name: bitwarden
-    image: vaultwarden/server:1.28.1-alpine
+    image: vaultwarden/server:1.30.0-alpine
     volumes:
       - "{{ appdata_path_cached }}/bitwarden:/data"
     depends_on:
@@ -70,7 +70,7 @@ containers:
     active: true
     include_global_env_vars: true
     container_name: caddy
-    image: caddy:2.6.4-alpine
+    image: caddy:2.7.5-alpine
     ports:
       - 80:80
       - 443:443
@@ -88,7 +88,7 @@ containers:
   - service_name: duckdns
     active: true
     include_global_env_vars: true
-    image: ghcr.io/linuxserver/duckdns:version-19b6f505
+    image: ghcr.io/linuxserver/duckdns:version-bf21711c
     environment:
       - SUBDOMAINS={{ DUCKDNS_SUBDOMAINS }}
       - TOKEN={{ DUCKDNS_TOKEN }}

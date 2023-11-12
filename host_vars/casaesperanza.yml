@@ -21,7 +21,7 @@ containers:
     active: true
     include_global_env_vars: true
     container_name: caddy
-    image: caddy:2.4.6-alpine
+    image: caddy:2.7.5-alpine
     ports:
       - 80:80
       - 443:443
@@ -40,7 +40,7 @@ containers:
     active: true
     include_global_env_vars: true
     container_name: duckdns
-    image: ghcr.io/linuxserver/duckdns:5679a6ee-ls88
+    image: ghcr.io/linuxserver/duckdns:version-bf21711c
     environment:
       - SUBDOMAINS={{ DUCKDNS_SUBDOMAINS }}
       - TOKEN={{ DUCKDNS_TOKEN }}
